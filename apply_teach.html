@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>APPLY NOW-CIntern</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="shortcut icon" href=""/>
+    <link rel="apple-touch-icon" href=""/>
+    <link rel="stylesheet" href="./css/main.css"/>
+    <link rel="stylesheet" href="./css/uploadify.css"/>
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/jquery.uploadify.min.js"></script>
+<!--     <script type="text/javascript" src="js/main.js"></script> -->
+	<!-应用LeanCloud必须include下面的js文件->
+    <script src="https://cdn1.lncld.net/static/js/av-mini-0.6.4.js"></script>
+    
+    
+    <script>
+	    //For check box & button disable
+	function checkbox(){
+		var check1 = document.getElementById('check1').checked;
+		var check2 = document.getElementById('check2').checked;
+		var check3 = document.getElementById('check3').checked;
+		if (check1 && check2 && check3){
+			var submit_btn = document.getElementById('submit-button');
+			submit_btn.removeAttribute('disabled');
+		}else{
+			var submit_btn = document.getElementById('submit-button');
+			submit_btn.setAttribute('disabled', 'true');
+		}
+	}
+	</script>
+	
+	
+	<script>
+		// For validation of input. Add css dynamic.
+		$(document).ready(function(){
+			$("#phone").blur(function(){
+				var parent =  $(this).parent();
+				parent.find(".formtip").remove();
+				
+				var phone = $(this).val();
+				var phone_len = phone.length;
+				if (phone_len != 11){
+					var errorMsg = '请输入正确的11位手机号';
+					parent.append('<p id="color-red" class="formtip">'+errorMsg+'</p>')
+						$(this).css('border-color', '#C03');
+				}
+				else{
+					$(this).css('border-color', "")
+				}
+			});
+			
+			$("#email").blur(function(){
+				var parent = $(this).parent();
+				parent.find(".formtip").remove();
+				
+				var email = $(this).val();
+				var mail_regx = new RegExp('^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+');
+				var mail_validate = mail_regx.test(email);
+				if (mail_validate){
+					$(this).css('border-color', "")
+				}
+				else{
+					var errorMsg = '请输入正确email地址';
+					parent.append('<p id="color-red" class="formtip">'+errorMsg+'</p>')
+					$(this).css('border-color', '#C03');
+				}
+			});
+			
+		});
+	</script>
+    
+    <!- Operation for link Leancloud ->
+    <script>
+	//AV.initialize('oovP05hC2Ca7baiw74LMeATz-gzGzoHsz', '20zyiPkEeM9G0eVa2X5I8TOE');
+	//创立链接，
+	AV.initialize('6hcMY9w73kPzm0ylIIkohULT-gzGzoHsz', 'Se7XPJhKal0aELUzxcdLiwgi');
+	// AV.Object 的稍复杂一点的子类
+	
+	// 声明对象
+	var Resume = AV.Object.extend('Resume');
+
+	//子类
+	$(document).ready(function(){
+		$("#submit-button").click(function(){
+			
+			// Get value
+			var fullname = $("#fullname").val();
+			var phone = $("#phone").val();
+			var gender = $("#gender").val();
+			var birthday = $("#birth").val();
+			var nationality = $("#nationality").val();
+			
+			// 创建对象实例
+			var resume = new Resume();
+			// Set Value
+			resume.set('name', fullname); // Text
+			resume.set('gender', gender); // Checkbox, ratio
+			resume.set('phone', phone);	// Text
+			resume.set('birth', birthday); // Date
+			resume.set('nationality', nationality); //Selector
+			
+			// 传输数据到后台
+			resume.save(null, {
+				success: function(resume){
+					//实例保存成功
+					alert("Submit success.");
+					self.location="index.html";
+				},
+				error: function(resume, error){
+					alert("Submit failed.");
+				}
+			});
+			
+		});
+		
+		});
+	</script>
+</head>
+
+
+<body>
+	<!--doc-->
+    <div class="g-doc">
+		<!--header-->
+        <div class="g-hd">
+			<!--container-->
+        	<div class="g-hd-c">
+            
+                <!--logo-->
+                <a href="index.html" class="m-logo"><img src="images/logo.png" alt="CIntern" /></a>
+                <!--logo end-->
+                
+                <!--navigation-->
+                <div class="g-hd-nav">
+                	<ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="apply.html">Apply</a></li>
+                    </ul>
+                </div>
+                <!--navigation end-->
+                
+            </div>
+			<!--container end-->
+        </div>
+		<!--header end-->
+        
+		<!--content-->
+        <div class="g-ct">
+        
+			<!--title-->
+            <div class="ct-title">
+            	<h1>APPLY NOW</h1>
+            </div>
+			<!--title end-->
+            
+			<!--Application Form-->
+            <div class="ct-af">
+            	
+                <!--left side-->
+                <div class="ct-af-l">
+                    	
+                        <!--form title-->
+                    	<div class="ct-af-title">
+                        	<h2>Application Form</h2>
+                            <p>Please complete the application in English.</p>
+                        </div>
+                        <!--form title end-->
+                        
+                        <!--form content-->
+                    	<form class="ct-af-content">
+                        	<ul>
+                            
+                            	<li>
+                                	<h4>Full Name<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<input id="fullname" type="text" />
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Gender<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+	                                    <!- id决定选择器如何获取element, type决定input类型， value决定val()获取到的值->
+                                    	<label><input id="gender" name="gender" type="radio" value="Male" checked>Male</label>
+                                    	<label><input id="gender" name="gender" type="radio" value="Female">Female</label>
+                                    	
+                                    </div>
+                                    
+                                </li>
+                                
+                            	<li>
+                                	<h4>Nationality / Passport<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+	                                    <!- id决定选择器如何获取element->
+                                    	<select id='nationality'>
+	                                    	<!- value设置决定val()获取到的值->
+                                        	<option value="china">China</option>
+                                        	<option value="england">England</option>
+                                        	<option value="spain">Spain</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Date of Birth<span class="color-red">*</span></h4>
+                                	<!- id决定选择器如何获取element, type决定input类型， value决定默认日期->
+                                    <input id='birth' type="date" value="2000-01-01" />
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Phone Number<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<input id="phone" type="text" />
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Email Address<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<input id='email' type="text" placeholder="We will email official correspondence to this address" />
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Home Address<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<p>Street AddressCityState</p>
+                                    	<input type="text" />
+                                    	<p>Province</p>
+                                    	<input type="text" />
+                                    	<p>RegionZIP</p>
+                                    	<input type="text" />
+                                    	<p>Postal CodeCountry</p>
+                                    	<input type="text" />
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Program Details</h4>
+                                    <div class="af-func">
+                                    	<input type="text" />
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>I am applying for the<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<input type="text" />
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Location<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<select>
+                                        	<option>select</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        </select>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Duration<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<select>
+                                        	<option>select</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        </select>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Your Level of Chinese<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<select>
+                                        	<option>select</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        </select>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Education<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<select>
+                                        	<option>select</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        </select>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>University or Institute<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<input type="text" />
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Graduation Date<span class="color-red">*</span></h4>
+                                    <input type='date' id="graduate" value='2014-06-20' />
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Degree / Qualification<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<select>
+                                        	<option>select</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        </select>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Grade / GPA<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<select>
+                                        	<option>select</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        </select>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Major</h4>
+                                    <div class="af-func">
+                                    	<select>
+                                        	<option>select</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        </select>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Other education, awards or achievements</h4>
+                                    <div class="af-func">
+                                    	<textarea></textarea>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Your Application</h4>
+                                    <div class="af-func">
+                                    	<p class="color-red">Please upload your CV / Resume in English*</p>
+                                        <p>The document must be in the following formats:<br> doc, docx, pdf, jpg, jpeg, gif, png, ppt, pptx</p>
+                                    	<input type="file" id="file_upload" />
+                                    	<script>
+	                                    	$(function() {
+											$('#file_upload').uploadify({
+												'formData'     : {
+													'timestamp' : '<?php echo $timestamp;?>',
+													'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+												},
+												'swf'      : 'uploadify.swf',
+												'uploader' : 'uploadify.php'
+											});
+										});
+	                                    </script>
+                                    	
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>What do you hope to gain from this internship program? (up to 2000 characters)<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<textarea></textarea>
+                                        <p>Consider including how you think experience in china will help your personal development, what professional exposure you are looking to gain, and how this program will contribute to your overall career goals.</p>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Why do you think you are suitable for this program? (up to 2000 characters)<span class="color-red">*</span></h4>
+                                    <div class="af-func">
+                                    	<textarea></textarea>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Additional Information</h4>
+                                    <div class="af-func">
+                                    	<p>Where did you hear about Cintern?</p>
+                                    	<select>
+                                        	<option>select</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        	<option>... ...</option>
+                                        </select>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Are you planning to travel to China with another person who will be applying with Cintern?</h4>
+                                    <div class="af-func">
+                                    	<input type="text" placeholder="Please give their name" />
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                            	<li>
+                                	<h4>Confirmation</h4>
+                                    <div class="af-func">
+                                    	<p><label><input id='check1' type="checkbox" value="no" onclick="checkbox()"/>I have checked that my passport has six months validity<span class="color-red">*</span></label></p>
+                                    	<p><label><input id='check2' type="checkbox" onclick="checkbox()"/>I understand that there is a fee for this program/course<span class="color-red">*</span></label></p>
+                                    	<p><label><input id='check3' type="checkbox" onclick="checkbox()"/>I agree to the Terms and Conditions<span class="color-red">*</span></label></p>
+                                    </div>
+                                    <p class="color-red"></p>
+                                </li>
+                                
+                                <li class="af-btn"><input type="button" id="submit-button" value="Submit" disabled="true"/></li>
+                                
+                            </ul>
+                        </form>
+                        <!--form content end-->
+                        
+                </div>
+                <!--left side end-->
+                
+                <!--right side-->
+                <div class="ct-af-r">
+                    
+                    <div class="af-faq-block">
+                        <h2>Why are we requesting this information?</h2>
+                        <p>Applicants must fully complete all the required field to be considered for admission. We need those information to know you better and to help us  match the company that fits you the best.</p>
+                        <p>Need more help?Visit our<br>
+                        <a class="link-org" href="faq.html">Frequently Asked Questions.</a></p>
+                    </div>
+                    
+                    
+                    <div class="af-faq-block af-nline">
+                        <h2>Application Deadline</h2>
+                        <p>The application deadline for our 2015 program is 6/30/2015.<br><br><b>Please note that there is a fee for our program.</b> This year in order to make sure that we have the most talented participants and meet the need of our cooperating companies, we are only accepting <b>10 students</b> for our 2015 program and those who are accepted will only need to pay <b>$1990(1 month) or $3350(2 months)</b> instead of our regular price of $2990(1 month) and $4950(2 months).
+</p>
+                    </div>
+                    
+                    
+                </div>
+                <!--right side end-->
+                
+            </div>
+			<!--Application Form end-->
+        
+        </div>
+		<!--content end-->
+        
+    </div>
+	<!--doc end-->
+    
+	<!--footer-->
+    <div class="g-ft">
+    
+		<!--main-->
+    	<div class="g-ft-m">
+        
+			<!--About Us-->
+        	<div class="ft-about">
+            	<div class="ft-ab-c">
+                    <h3 class="ft-h3">About Us</h3>
+                    <p class="ft-h3-p">CIntern Program offers talented students currently studying in colleges and graduate students a chance to work inside innovative Chinese startups, logistic firms, and financial institutions. Through the programs students may get to know the brilliant people, magnificent culture, and amazing cuisine of real China. They can also gain first handed entrepreneurial experience and greatly improve their language skills working with brilliant Chinese peers and one to one local advisors.</p>
+                </div>
+            </div>
+			<!--About Us end-->
+            
+			<!--connect-->
+        	<div class="ft-connect">
+            	<h3 class="ft-h3">Or Connect With Us!</h3>
+                <ul class="ft-lk">
+                	<li><a class="ft-lk-f" href="#"></a></li>
+                	<li><a class="ft-lk-t" href="#"></a></li>
+                	<li><a class="ft-lk-d" href="#"></a></li>
+                	<li><a class="ft-lk-p" href="#"></a></li>
+                	<li><a class="ft-lk-g" href="#"></a></li>
+                	<li><a class="ft-lk-r" href="#"></a></li>
+                </ul>
+				<p class="ft-h3-p">Or send us an email at <a class="color-blue" href="mailto:Cinternship@hotmail.com">Cinternship@hotmail.com</a></p>
+            </div>
+			<!--connect end-->
+            
+        </div>
+		<!--main end-->
+    
+		<!--Copyright-->
+    	<div class="g-ft-cb">
+        	<div class="g-ft-ct">Copyright 2014-2015@CIntern Co,.Ltd, All rights reserved</div>
+        </div>
+		<!--Copyright end-->
+        
+	</div>
+	<!--footer end-->
+
+</body>
+<!--dody end-->
+
+</html>
