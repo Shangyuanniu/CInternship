@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>APPLY NOW-CIntern</title>
+    <title>APPLY NOW</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width"/>
@@ -144,8 +144,7 @@
 </head>
 
 
-    
-</head>
+
 <!--dody-->
 <body>
 
@@ -325,7 +324,8 @@
                                     <div class="af-func">
                                     	
                                         <p>The document must be in the following formats:<br> doc, pdf, jpg, png</p>
-                                    	<input id = 'resume' type="file" />
+                                    	<input id = 'resume' type="file" multiple="true"/>
+                                    		 	<a href="javascript:$('#resume').uploadify('upload', '*')">Upload the Files</a>	
                                     	<script>
 	                                    	$(function() {							
 														$('#resume').uploadify({
@@ -333,11 +333,49 @@
 																'timestamp' : '<?php echo $timestamp;?>',
 																'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
 															},
-															'swf'      : 'uploadify.swf',
-															'uploader' : 'uploadify.php'
-														});
+															'swf'      : '/uploadify.swf',
+															'uploader' : '/uploadify.php',
+															'auto':false,
+															
+															
+															/*
+															//check Resume exist or not
+															'checkExisting' : 'check-exists.php',
+															var check = 'checkExisting'.val();
+															if(check= 1 ){
+																
+															}
+															else{
+																
+															}
+															*/
+															
+															'fileSizeLimit' : '5MB',
+															
+															//'method':'post',
+															
+															    //上传的时候发生的事件
+															/*    
+														    'onUploadStart' : function(file){
+														      alert('Submit Started');       },
+														   */
+														    'uploadLimit'   : 2,
+														     //设置最大上传文件的数量
+														   
+														     
+														     //文件上传成功的时候
+														   'onUploadSuccess' : function(file, data, response) {
+														            alert('Your Resume: ' + file.name + ' was uploaded successfully');
+														        }
+
+														     
+														});	
+														
+															
+															
+															
 											});	
-												</script>
+										</script>
                                     </div>
                                     <p class="color-red"></p>
                                 </li>
@@ -357,7 +395,7 @@
                                     <div class="af-func">
                                     	<p><label><input type="checkbox" id = 'check1' onclick="checkbox()" />I have checked that my passport has six months validity<span class="color-red">*</span></label></p>
                                     	<p><label><input type="checkbox" id = 'check2' onclick="checkbox()" />I understand that there is a charge for Cinternship accommodation services<span class="color-red">*</span></label></p>
-                                    	<p><label><input type="checkbox" id = 'check3' onclick="checkbox()" />I agree to the Terms and Conditions<span class="color-red">*</span></label></p>
+                                    	<p><label><input type="checkbox" id = 'check3' onclick="checkbox()" />I agree to the <a href = "Cinternship Terms and Conditions.pdf" target = "_blank">Terms and Conditions</a><span class="color-red">*</span></label></p>
                                     	
                                     </div>
                                     <p class="color-red"></p>
