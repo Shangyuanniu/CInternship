@@ -10,8 +10,6 @@
     <link rel="apple-touch-icon" href=""/>
     <link rel="stylesheet" href="css/main.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/unslider.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
 </head>
 <!--dody-->
 <body>
@@ -32,8 +30,15 @@
                 <div class="g-hd-nav">
                 	<ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="about.html">About</a></li>                       
+                        <li class="dropdown"><a href="#">Our Program</a>
+                          <div class="dropdown-content">
+                            <a href="Shenzhen.html">City</a>
+                            <a href="Package.html">Living</a>
+                            <a href="#">Social</a>
+                          </div>
+                        </li>
+                        <li><a href="opportunity.php">Opportunity</a></li>
                         <li><a href="faq.html">FAQ</a></li>
                         <li><a href="apply.php">Apply</a></li>
                     </ul>
@@ -49,52 +54,35 @@
         <div class="g-ct">
         
 			<!--title-->
-            <div class="ct-title">
-            	<h1>Industires</h1>
+            <div class="ind-title">
+            	<h1>Opportunites</h1>
             </div>
 			<!--title end-->
-        
+
+
 			<!--main-->
             <div class="ind-main">
-            	<h2>Featured Company</h2>
-                <p><img src="images/logo-2.png" alt="" width="558px" /></p>
-                <p>SIFMC, an investment fund management company led by famous Chinese investor Dr. Wanshou  Li, provides a wide range of 
-customized services for enterprises,including: strategic planning, investment analysis, trading structuring, capital market 
-operations, venture capital and angel investment.  Its business partners include Credit Suisse, Roland Berger Strategy 
-Consultants, Peugeot Family, American Global Fund, and Arnault Family.</p>
-            </div>
-			<!--main end-->
-            
-			<!--main-->
-            <div class="ind-main">
-            	<h2>Internship Sectors</h2>
                 <ul class="inpic-ul">
-                	<li>
-                    	<div class="pc-blc">
-                            <img src="images/1840529361-e1389807391308.jpg" />
-                            <div>Tech Start-ups</div>
-                        </div>
-                    	<div class="pc-blc">
-                            <img src="images/finance.jpg" />
-                            <div>Finance</div>
-                        </div>
-                    </li>
-                	<li>
-                    	<div class="pc-blc">
-                            <img src="images/url.jpg" />
-                            <div>Manufacturing</div>
-                        </div>
-                    	<div class="pc-blc">
-                            <img src="images/89.jpg" />
-                            <div>Logistics</div>
-                        </div>
-                    </li>
-                	<li>
-                    	<div class="pc-blc">
-                            <img src="images/ArchitectureWallpapers-37.jpg" />
-                            <div>Architecture</div>
-                        </div>
-                    </li>
+                    <?php
+                        $json = file_get_contents('opportunity.json');
+                        $data = json_decode($json, true);
+
+                        foreach ($data as $value) {
+                            if($value["id"]%2 == 1){
+                                echo "<li>";
+                            }
+                            echo "<div class='pc-blc' style='background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) )
+                            ,url(\"img/".$value["id"].".jpg\")'>
+                            <div class = 'job-title'>".$value["jobname"]."</div>
+                            <div class = 'job-discription'> With ".$value["company"]."<br>
+                            Between 6 and 10 weeks<br>
+                            In Shenzhen, China</div>
+                        </div> ";
+                            if($value["id"]%2 == 0){
+                                echo "</li>";
+                            }
+                        }
+                    ?>
                 </ul>
             </div>
 			<!--main end-->

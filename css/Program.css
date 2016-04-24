@@ -1,0 +1,90 @@
+.navbar-brand {
+	padding:6px 20px 10px 20px;
+
+}
+
+
+.nav{
+	margin-right: 1px;
+}
+
+
+.nav li{
+	padding:0 20px;
+	font-size:16px;
+	text-align:center;
+	font-size:16px;
+	text-decoration: stroke;
+	display:inline-block;*display:inline;*zoom:1;
+}
+
+.nav a{
+	font-size: 16px;
+	text-decoration: stroke;
+	padding:0 10px;
+	color: color:rgba(255, 255, 255, 0.7) !important;;
+}
+
+.container-fluid{
+	height:100%;
+	width:100%;
+	max-width:1300px;
+	margin:auto;
+}
+
+.navbar{
+	height:60px;
+	padding:1px 0;
+	text-align:center;
+	font-family:"proxima-nova", Helvetica, sans-serif;
+}
+
+.dropdown-menu{
+	display: none;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-menu a{
+	font-color:black;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: stroke;
+    min-width: 160px;
+    
+}
+
+.dropdown-menu a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.content{margin-top: 40px;}
+
+#blank{
+	margin-top: 10%;
+}
+
+.real{
+	height: 200px;
+}
+
+
+.col-sm-5 img{
+	height: 100%;
+}
+
+body {		
+	background-image:url("images/shenzhen.png");
+	background-size:cover;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; }

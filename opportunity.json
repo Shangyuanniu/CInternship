@@ -1,0 +1,55 @@
+[
+	{	
+		"id":"1",
+		"jobname":"Customer Relation Managing Intern",
+		"company":"AOK Technoloiges",
+		"duration1":"6",
+		"duration2":"10",
+		"location":"Shenzhen, China"
+	},
+
+	{	
+		"id":"2",
+		"jobname":"Public Relation/Legal Intern",
+		"company":"Syncapital",
+		"duration1":"6",
+		"duration2":"10",
+		"location":"Shenzhen, China"
+	},
+
+	{	
+		"id":"3",
+		"jobname":"English Language Instructor Intern",
+		"company":"Longhua Experimental Chinese-English School",
+		"duration1":"6",
+		"duration2":"10",
+		"location":"Shenzhen, China"
+	},
+
+	{	
+		"id":"4",
+		"jobname":"Android/iOS Developer Intern",
+		"company":"FTApps",
+		"duration1":"6",
+		"duration2":"10",
+		"location":"Shenzhen, China"
+	},
+
+	{	
+		"id":"5",
+		"jobname":"Marketing Intern",
+		"company":"Foothill Education Club",
+		"duration1":"6",
+		"duration2":"10",
+		"location":"Shenzhen, China"
+	},
+
+	{	
+		"id":"6",
+		"jobname":"Product R&D Intern",
+		"company":"AOK Technoloiges",
+		"duration1":"6",
+		"duration2":"10",
+		"location":"Shenzhen, China"
+	}
+]

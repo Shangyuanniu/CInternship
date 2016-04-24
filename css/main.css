@@ -1,4 +1,11 @@
-/* CSS Document */
+/* CSS Document 
+
+Author: 
+Created  on:
+last modified by: Yitian Zhang
+last modified time: 04/08/2016 22:32
+
+*/
 
 /* reset */ html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}  header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}  table{border-collapse:collapse;border-spacing:0;}  caption,th{text-align:left;font-weight:normal;}  html,body,fieldset,img,iframe,abbr{border:0;}  i,cite,em,var,address,dfn{font-style:normal;}  [hidefocus],summary{outline:0;}  li{list-style:none;}  h1,h2,h3,h4,h5,h6,small{font-size:100%;}  sup,sub{font-size:83%;}  pre,code,kbd,samp{font-family:inherit;}  q:before,q:after{content:none;}  textarea{overflow:auto;resize:none;}  label,summary{cursor:default;}  a,button{cursor:pointer;}  h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}  del,ins,u,s,a,a:hover{text-decoration:none;}  body,textarea,input,button,select,keygen,legend{font:12px/1.14,\5b8b\4f53;color:#333;outline:0;}  body{background:#fff;}  a,a:hover{color:#333;}
 
@@ -20,6 +27,38 @@ html,body{width:100%;height:100%;margin:0; font-family:"proxima-nova", sans-seri
 .g-ft{height:350px;margin:-350px 0 0; position:relative; z-index:1;}
 
 /* header */
+
+
+/*dropdown menu*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+	position: absolute;
+    min-width: 115px;
+    background-color: #191817 !important;
+    
+}
+
+.dropdown-content a{
+	font-color:black;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: stroke;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: rgba(255, 255, 255, 0.7)}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*dropdown menu end*/
+
+
 .g-hd{
 	background:#191817;
 	width:100%;
@@ -160,7 +199,7 @@ html,body{width:100%;height:100%;margin:0; font-family:"proxima-nova", sans-seri
 	position: relative;
 	overflow:hidden;
 	width:100%;
-	height: 720px;
+	height:720px ;
 }
 .banner ul{
 	width:100%;
@@ -247,6 +286,14 @@ html,body{width:100%;height:100%;margin:0; font-family:"proxima-nova", sans-seri
 	background:#0166a6;
 }
 
+
+.d-l{
+    float:left;width:50%;
+}
+.d-r{
+    float:right;width:50%;
+}
+
 /* about */
 .inner-p{
 	color:#FFF;
@@ -255,23 +302,91 @@ html,body{width:100%;height:100%;margin:0; font-family:"proxima-nova", sans-seri
 	margin:35px auto 0;
 	font-weight:bold;
 }
-.ct-text{
-	padding:190px 5%;
-	color:#000;
-}
-.ct-text h1{
-	font-size:36px;
-}
-.ct-text p{
-	font-size:30px;
-	margin-top:55px;
-}
-.ct-pic{
+.ct-linkbanner{
 	width:100%;
-	line-height:0;
+	padding: 30px;
+	background-color: rgb(102, 106, 116);
+	text-align: center;
 }
 
-/* companies */
+.ct-linkbanner p{
+	font-size: 30px;
+	font-weight: bold;
+	color:white;
+}
+
+.ct-linkbanner a{
+	border: 1px solid white;
+	padding:5px;
+	color:white;
+}
+
+.ct-abt{
+	width:100%;
+	padding:0;
+	margin:0 auto;
+	overflow:hidden;
+}
+.ct-abt-l1{
+	float:left;
+	width:50%;
+	padding-left:0;
+}
+.ct-abt-r2{
+	float:right;
+	width:50%;
+	padding-right:0;
+}
+
+.ct-abt-r1{
+	float:right;
+	width:50%;
+	text-align:left;
+}
+.ct-abt-l2{
+	float:left;
+	max-width:50%;
+	text-align:left;
+}
+.ct-abt-l2 h2, .ct-abt-r1 h2{
+	font-size: 20px;
+	margin-top: 30px;
+	padding:20px 100px;
+	font-weight: bold;
+}
+.ct-abt-l2 p, .ct-abt-r1 p{
+	font-size: 20px;
+	padding:20px 100px;
+}
+
+.ct-abt-imgl{
+	width:100%;
+	padding:0px;
+	margin:0px;
+}
+.ct-abt-imgr{
+	width:100%;
+	padding:0px;
+	margin:0px;
+}
+.ct-abt-imgl img{
+	float:left;
+	width:100%;
+	margin:0;
+	padding:0;
+	max-height: 470px;
+}
+.ct-abt-imgr img{
+	float:right;
+	width:100%;
+	margin:0;
+	padding:0;
+	max-height: 470px;
+}
+
+
+/* faq */
+
 .ct-title{
 	width:92%;
 	max-width:1100px;
@@ -287,36 +402,6 @@ html,body{width:100%;height:100%;margin:0; font-family:"proxima-nova", sans-seri
 	font-size:17px;
 	padding-top:25px;
 }
-.ct-clogo{
-	padding:35px 6%;
-}
-.ct-clogo li{
-	display:inline;
-}
-.ct-clogo *{
-	vertical-align:middle;
-	font-size:0;
-	word-spacing:0;
-	
-}
-.ct-clogo li a{
-	display:inline-block;
-	width:210px;
-	height:210px;
-	line-height:210px;
-	background:#FFF;
-	border:1px solid #CCC;
-}
-.ct-clogo a img{
-	width:auto;
-	height:auto;
-	margin:auto;
-	max-height:100%;
-	max-width:100%;
-	display:inline;
-}
-
-/* faq */
 .ct-faq{
 	width:96%;
 	max-width:1200px;
@@ -473,11 +558,26 @@ p.color-red{font-size:14px;}
 }
 
 /* industries */
-.ind-main{
+.ind-title{
 	width:92%;
 	max-width:1100px;
 	margin:0 auto;
 	padding:40px 0 25px;
+	border-bottom:6px solid #9f9e9d;
+}
+.ind-title h1{
+	font-size:48px;
+	font-family:Helvetica;
+}
+.ind-title p{
+	font-size:17px;
+	padding-top:25px;
+}
+.ind-main{
+	width:92%;
+	max-width:1100px;
+	margin:0 auto;
+	padding:10px 0 25px;
 }
 .ind-main h2{
 	font-size:48px;
@@ -500,21 +600,40 @@ p.color-red{font-size:14px;}
 }
 .pc-blc{
 	display:inline-block;
-	margin:0 2% 50px;
+	margin:0 1% 50px;
 	position:relative;
 	width:45%;
+	height: 400px;
+	box-shadow: 3px 3px 3px #888888;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	background-position: center !important;
+	
 }
-.pc-blc img{
-	width:100%;
+
+.pc-blc:hover{
+	box-shadow: 5px 5px 5px #888888;
 }
-.pc-blc div{
+.job-title{
 	position:absolute;
 	left:0;
 	top:50%;
 	bottom:0;
 	right:0;
 	margin-top:-24px;
-	font-size:48px;
-	font-weight:bold;
+	font-size:40px;
 	color:#fff;
+}
+
+.job-discription{
+	position:absolute;
+	left:0;
+	top:88%;
+	bottom:0;	
+	right:0;
+	margin-left: 20px;
+	margin-top:-24px;
+	font-size:20px;
+	color:#fff;
+	text-align: left;
 }

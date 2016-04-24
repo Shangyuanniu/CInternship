@@ -164,10 +164,17 @@
                 <div class="g-hd-nav">
                 	<ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="about.html">About</a></li>                       
+                        <li class="dropdown"><a href="#">Our Program</a>
+                          <div class="dropdown-content">
+                            <a href="Shenzhen.html">City</a>
+                            <a href="Package.html">Living</a>
+                            <a href="#">Social</a>
+                          </div>
+                        </li>
+                        <li><a href="opportunity.php">Opportunity</a></li>
                         <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="apply.html">Apply</a></li>
+                        <li><a href="apply.php">Apply</a></li>
                     </ul>
                 </div>
                 <!--navigation end-->
